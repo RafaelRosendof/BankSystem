@@ -67,17 +67,19 @@ public class Transaction{
 
     public Transaction(){}
 
-    public Transaction(Cliente payCliente , LocalDateTime data , Cliente reciveCliente , String reciveAccount , String payerAccount , BigDecimal value , String reciveKey , String payerKey , BigDecimal criptoValue){
-        this.payerCliente = payCliente;
-        this.data = data;
-        this.reciveCliente = reciveCliente;
-        this.reciveAccount = reciveAccount;
-        this.payerAccount = payerAccount;
-        this.value = value;
+    public Transaction( String reciveKey , String payerKey , BigDecimal criptoValue){
         this.reciveKey = reciveKey;
         this.payerKey = payerKey;
         this.criptoValue = criptoValue;
     }
+
+    public Transaction(Cliente payCliente , Cliente reciveCliente , BigDecimal value , LocalDateTime data){
+        this.payerCliente = payCliente;
+        this.reciveCliente = reciveCliente;
+        this.value = value;
+        this.data = data;
+    }
+
 
     public void setPayClient(Cliente payCliente){
         this.payerCliente = payCliente;

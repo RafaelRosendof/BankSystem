@@ -26,6 +26,9 @@ public class Cliente extends User{
     @Column(name = "criptoKey")
     private String criptoKey;
 
+    @Column(name = "privateKey")
+    private String privateKey;
+
     @Column(name = "securityKey")
     private String securityKey;
 
@@ -37,7 +40,7 @@ public class Cliente extends User{
 
     public Cliente(){}
 
-    public Cliente(String name , String surname , String login , String password , String email, BigDecimal balance , String account , String criptoKey , String securityKey , BigDecimal bitcoin , BigDecimal etherum ){
+    public Cliente(String name , String surname , String login , String password , String email, BigDecimal balance , String account , String criptoKey , String securityKey , BigDecimal bitcoin , BigDecimal etherum , String privateKey){
         super(name, surname, login, password, email);
         this.balance = balance;
         this.account = account;
@@ -45,6 +48,7 @@ public class Cliente extends User{
         this.securityKey = securityKey;
         this.bitcoin = bitcoin;
         this.etherum = etherum;
+        this.privateKey = privateKey;
     }
 
     //gets and sets
@@ -90,6 +94,15 @@ public class Cliente extends User{
     public BigDecimal getEtherum(){
         return etherum;
     }
+
+    public void setPrivateKey(String privateKey){
+        this.privateKey = privateKey;
+    }
+
+    public String getPrivateKey(){
+        return privateKey;
+    }
+
 
     //to String 
     @Override

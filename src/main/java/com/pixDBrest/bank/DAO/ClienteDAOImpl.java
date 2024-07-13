@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 
 import org.springframework.stereotype.Repository;
 
+//import java.sql.*;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.TypedQuery;
@@ -54,10 +55,6 @@ public class ClienteDAOImpl implements ClienteDao{
 
      }
 
-    @Override
-    public void updateKey(Cliente cliente){
-        entityManager.merge(cliente);
-    } 
 
     @Override
     public Cliente findByAccount(String account){
@@ -79,6 +76,33 @@ public class ClienteDAOImpl implements ClienteDao{
 
         return cliente.toString();
     }
+/* 
+    @Override
+    public void updateBalance(String account, BigDecimal value){
+        Cliente cliente = entityManager.find(Cliente.class, account);
+        cliente.setBalance(value);
+        entityManager.merge(cliente);
+    }
+*/
+    @Transactional
+    @Override
+    public void updateBalance(String account , BigDecimal value){
+        entityManager.createQuery("UPDATE Cliente c SET c.balance = :value WHERE c.account = :account")
+        .setParameter("value",value)
+        .setParameter( "account", "account")
+        .executeUpdate();
+    }
+
+    @Override
+    @Transactional
+    public void updateKey(String account, String publicKey, String privateKey) {
+        entityManager.createQuery("UPDATE Cliente c SET c.criptoKey = :publicKey, c.privateKey = :privateKey WHERE c.account = :account")
+                     .setParameter("publicKey", publicKey)
+                     .setParameter("privateKey", privateKey)
+                     .setParameter("account", account)
+                     .executeUpdate();
+    }
+
 
 }
 
