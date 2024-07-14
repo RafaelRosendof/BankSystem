@@ -39,12 +39,10 @@ public class Transaction{
     @JoinColumn(name = "reciverID")
     private Cliente reciveCliente;
 
-    @ManyToOne
-    @JoinColumn(name = "reciveAccount")
+    @Column(name = "reciveAccount")
     private String reciveAccount;
 
-    @ManyToOne
-    @JoinColumn(name = "payerAccount")
+    @Column(name = "payerAccount")
     private String payerAccount;
 
     //todo chaves cripto e outros métodos 
@@ -52,12 +50,10 @@ public class Transaction{
     @Column(name = "value")
     private BigDecimal value;
 
-    @ManyToOne
-    @JoinColumn(name = "reciveKey")
+    @Column(name = "reciveKey")
     private String reciveKey;
 
-    @ManyToOne
-    @JoinColumn(name = "payerKey")
+    @Column(name = "payerKey")
     private String payerKey;
 
     @Column(name = "criptValue" , precision = 19 , scale =  8 , nullable = false)
