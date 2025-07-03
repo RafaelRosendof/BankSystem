@@ -1,0 +1,1 @@
+// na parte do resgiter cliente colocar o @Valid para validar o objeto de acordo com as especificações da classe

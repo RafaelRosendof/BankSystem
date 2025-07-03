@@ -7,6 +7,10 @@
 package com.pixDBrest.bank.Entity;
 
 
+import com.pixDBrest.bank.DAO.EmailValid;
+import com.pixDBrest.bank.DAO.ValidPass;
+import javax.validation.constraints.*;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -30,10 +34,13 @@ public class User{
     @Column(name = "login")
     private String login;
 
-    @Column(name = "password") //todo put restrictions in the type of the password
+    
+    @Column(name = "password") //todoverify if its correct the valid
+    @ValidPass
     private String password;
 
-    @Column(name = "email") //todo: put some restrictions in the type of the email 
+    @Column(name = "email") //todo: same as above
+    @EmailValid
     private String email;
 
     public User(){}
